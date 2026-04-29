@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Deep Drive Archive</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="scanlines"></div>
+
+  <header class="panel hero">
+    <h1>💾 ARPANET DEEP DRIVE</h1>
+    <marquee>AUTHORIZED ACCESS ONLY // ARCHIVE VAULT // 1983 NODE DATA</marquee>
+    <a href="index.html">⬅ Return to Main System</a>
+  </header>
+ 
+
+  <main>
+
+    <!-- AUDIO VAULT -->
+    <section class="section panel">
+      <h2>🎧 Audio Archive</h2>
+
+      <div class="terminal-log">
+        <p>Playing: ARPANET Transmission Audio</p>
+
+        <audio id="deep-audio" controls loop preload="auto">
+  <source src="./audio/arpanet-sound.mp3" type="audio/mpeg">
+  <source src="./audio/arpanet-sound.wav" type="audio/wav">
+  <audio id="deep-audio" controls loop autoplay muted> </audio>
+  Your browser does not support the audio element.
+</audio>
+      </div>
+    </section>
+
+    <!-- SECRET FILES -->
+    <section class="section panel">
+      <h2>📂 Classified Files</h2>
+
+      <div class="console-output">
+        <p>> loading files...</p>
+        <p>> packet_logs_1969.txt</p>
+        <p>> imp-routing-diagram.sys</p>
+        <p>> tcpip-transition.log</p>
+        <p>> ACCESS LEVEL: GRANTED</p>
+      </div>
+    </section>
+
+    <!-- VIDEO / GIF AREA -->
+    <section class="section panel">
+      <h2>📺 Visual Archive</h2>
+
+      <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" width="300">
+
+      <p>Historic network visualization</p>
+    </section>
+
+    <!-- SECRET BUTTON -->
+    <section class="section panel">
+      <h2>🧪 Hidden Experiment</h2>
+
+      <button id="deep-button" class="retro-action">Run Deep Scan</button>
+      <p id="deep-output">Awaiting command...</p>
+    </section>
+
+  </main>
+
+  <script>
+    document.getElementById("deep-button").addEventListener("click", () => {
+      const output = document.getElementById("deep-output");
+
+      const messages = [
+        "Scanning nodes...",
+        "Connecting to UCLA...",
+        "Routing through IMP...",
+        "Accessing 1983 archive...",
+        "⚠ SYSTEM OVERRIDE COMPLETE ⚠"
+      ];
+
+      let i = 0;
+
+      const interval = setInterval(() => {
+        output.textContent = messages[i];
+        i++;
+
+        if (i >= messages.length) clearInterval(interval);
+      }, 700);
+    });
+  </script>
+  <script>
+  const audio = document.getElementById("deep-audio");
+
+  // Try to autoplay with sound after user interaction
+  document.body.addEventListener("click", () => {
+    if (audio.muted) {
+      audio.muted = false;
+      audio.play().catch(() => {});
+    }
+  });
+
+  // Status logging (optional but cool)
+  audio.addEventListener("play", () => {
+    console.log("Audio playing");
+  });
+
+  audio.addEventListener("error", () => {
+    console.log("Audio failed to load");
+  });
+</script>
+
+
+</body>
+</html>
