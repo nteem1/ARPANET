@@ -11,7 +11,7 @@ from typing import Any
 from urllib.request import urlopen
 
 import psutil
-from flask import Flask, abort, render_template, request, redirect, url_for, session, send_file
+from flask import Flask, abort, render_template, request, redirect, url_for, session, send_file, send_from_directory
 
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY", "change-me-in-production")
@@ -19,6 +19,7 @@ app.secret_key = os.getenv("SECRET_KEY", "change-me-in-production")
 PASSWORD = "64682789"
 SEVERCODE = "1384792913997999177997719777916371361638122618677997737"
 MASTER_HATCH_CODE = "417264-62317-NKTTGG"
+PROJECT_ROOT = Path(__file__).resolve().parent
 
 
 def get_protected_pdf_path() -> Path:
@@ -256,6 +257,51 @@ def notes():
         master_hatch_code=MASTER_HATCH_CODE,
         protected_pdf_path=str(get_protected_pdf_path()),
     )
+
+
+@app.route("/archive")
+def archive_home():
+    return send_from_directory(PROJECT_ROOT, "index.html")
+
+
+@app.route("/archive/deepdive")
+def archive_deepdive():
+    return send_from_directory(PROJECT_ROOT, "deepdive.html")
+
+
+@app.route("/index.html")
+def archive_index_file():
+    return send_from_directory(PROJECT_ROOT, "index.html")
+
+
+@app.route("/deepdive.html")
+def archive_deepdive_file():
+    return send_from_directory(PROJECT_ROOT, "deepdive.html")
+
+
+@app.route("/styles.css")
+def archive_styles_root():
+    return send_from_directory(PROJECT_ROOT, "styles.css")
+
+
+@app.route("/script.js")
+def archive_script_root():
+    return send_from_directory(PROJECT_ROOT, "script.js")
+
+
+@app.route("/audio/<path:asset_name>")
+def archive_audio_root(asset_name: str):
+    return send_from_directory(PROJECT_ROOT / "audio", asset_name)
+
+
+@app.route("/archive/assets/<path:asset_path>")
+def archive_assets(asset_path: str):
+    # Serve only the build assets used by the modern archive pages.
+    allowed_prefixes = ("audio/",)
+    allowed_files = {"styles.css", "script.js"}
+    if asset_path not in allowed_files and not asset_path.startswith(allowed_prefixes):
+        abort(404)
+    return send_from_directory(PROJECT_ROOT, asset_path)
 
 
 @app.route("/logout", methods=["POST"])

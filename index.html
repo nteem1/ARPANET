@@ -3,343 +3,293 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ARPANET 90s Museum</title>
+    <title>ARPANET Interactive Research Platform</title>
+    <meta
+      name="description"
+      content="A modern, data-rich ARPANET archive with timeline analytics, simulations, and interactive learning tools."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Source+Serif+4:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="scanlines" aria-hidden="true"></div>
+    <a class="skip-link" href="#main-content">Skip to content</a>
 
-    <header class="hero panel">
-      <section class="section panel">
-  <div class="section-head">
-    <h2>💾 Deep Drive Access</h2>
-    <p>Enter the hidden ARPANET archive system</p>
-  </div>
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <div>
+            <p class="brand-kicker">Research Platform</p>
+            <h1>ARPANET Interactive Archive</h1>
+          </div>
+        </div>
 
-  <marquee>⚠ AUTHORIZED USERS ONLY ⚠ DEEP ARCHIVE ACCESS ⚠</marquee>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="#dashboard">Dashboard</a>
+          <a href="#timeline">Timeline</a>
+          <a href="#network-lab">Network Lab</a>
+          <a href="#learning-studio">Learning Studio</a>
+          <a href="#community">Community</a>
+        </nav>
 
-  <div style="text-align:center; margin-top: 10px;">
-    <a href="deepdive.html" class="retro-action">
-      🚪 ENTER DEEP DRIVE
-    </a>
-  </div>
-</section>
-      <p class="kicker">Virtual History Terminal v1.9</p>
-      <marquee behavior="alternate" scrollamount="7"
-        >ARPANET ARCHIVE ONLINE | BEST VIEWED AT 800x600 | WIN THE 90s WEB CONTEST</marquee
-      >
-      <h1>ARPANET: ORIGIN OF THE INTERNET</h1>
-      <p>
-        A maximalist 90s-style museum website covering the rise of packet switching, early network milestones,
-        pioneers, protocols, and legacy.
-      </p>
-      <nav class="top-links">
-        <a href="#timeline">Timeline</a>
-        <a href="#sim">Simulator</a>
-        <a href="#protocol-lab">Protocol Lab</a>
-        <a href="#guestbook">Guestbook</a>
-        <a href="deep-dive.html">Deep Dive + Audio</a>
-      </nav>
-      <div class="status-strip">
-        <span class="blink">UNDER CONSTRUCTION</span>
-        <span>NO FRAMES</span>
-        <span>RETRO MODE</span>
-        <span id="secret-status">STATUS: NORMAL</span>
+        <div class="topbar-actions">
+          <button id="theme-toggle" class="btn btn-ghost" type="button" aria-pressed="false">Theme</button>
+          <button id="open-command" class="btn btn-primary" type="button">Cmd/Ctrl+K</button>
+        </div>
       </div>
     </header>
 
-    <div class="pixel-divider" aria-hidden="true"></div>
+    <main id="main-content">
+      <section class="hero container">
+        <div class="hero-copy">
+          <p class="eyebrow">1962 to 1990</p>
+          <h2>From packet-switching experiment to internet foundation</h2>
+          <p>
+            Explore ARPANET through structured data, simulations, and modular interactive tools. This platform is built
+            for deep reading, rapid lookup, and hands-on experimentation.
+          </p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="#timeline">Explore Timeline</a>
+            <a class="btn btn-ghost" href="deepdive.html">Open Deep Dive</a>
+          </div>
+        </div>
+        <div class="hero-side card">
+          <h3>Quick Search</h3>
+          <label for="global-search" class="label">Find across cards, FAQ, and labs</label>
+          <input id="global-search" type="search" placeholder="Search milestones, protocols, or people..." />
+          <div class="hero-side-actions">
+            <button id="clear-search" class="btn btn-ghost" type="button">Clear</button>
+            <span id="search-count" class="meta">Ready</span>
+          </div>
+        </div>
+      </section>
 
-    <section class="section panel">
-  <div class="section-head">
-    <h2>🎧 Retro Audio Terminal</h2>
-    <p>Streaming from the ARPANET archives...</p>
-  </div>
-
-  <div class="terminal-log">
-    <audio controls autoplay loop>
-      <source src="audio/arpanet-sound.mp3" type="audio/mpeg">
-      Your browser does not support audio.
-    </audio>
-    <p>▶ SYSTEM AUDIO ONLINE</p>
-  </div>
-</section>
-    <main>
-      <section class="section panel" id="timeline">
+      <section id="dashboard" class="container section">
         <div class="section-head">
-          <h2>Expanded Timeline (1962-1990)</h2>
-          <p>Filter by milestone year, use slider scrub, or autoplay.</p>
+          <h2>Dashboard</h2>
+          <p>High-level metrics and activity snapshots from the ARPANET story arc.</p>
         </div>
 
-        <div class="year-controls" role="toolbar" aria-label="Timeline year controls">
-          <button class="year-btn active" data-year="all" type="button">All</button>
-          <button class="year-btn" data-year="1962" type="button">1962</button>
-          <button class="year-btn" data-year="1965" type="button">1965</button>
-          <button class="year-btn" data-year="1968" type="button">1968</button>
-          <button class="year-btn" data-year="1969" type="button">1969</button>
-          <button class="year-btn" data-year="1971" type="button">1971</button>
-          <button class="year-btn" data-year="1973" type="button">1973</button>
-          <button class="year-btn" data-year="1983" type="button">1983</button>
-          <button class="year-btn" data-year="1990" type="button">1990</button>
-        </div>
+        <div class="stats-grid" id="stats-grid"></div>
 
-        <div class="timeline-tools">
-          <button class="retro-action" id="timeline-play" type="button">Auto Play Years</button>
-          <label for="timeline-speed">Speed</label>
-          <select id="timeline-speed">
-            <option value="1800">Slow</option>
-            <option value="1200" selected>Normal</option>
-            <option value="700">Fast</option>
-          </select>
-          <label for="timeline-slider">Scrub</label>
-          <input id="timeline-slider" type="range" min="0" max="8" step="1" value="0" />
-          <span id="timeline-status">Manual mode</span>
-        </div>
+        <div class="panel-grid">
+          <article class="card">
+            <h3>Audio Stream + Visualizer</h3>
+            <p class="muted">Listen while exploring the archive.</p>
+            <audio id="archive-audio" controls loop preload="metadata">
+              <source src="audio/arpanet-sound.mp3" type="audio/mpeg" />
+              <source src="audio/arpanet-sound.wav" type="audio/wav" />
+              Your browser does not support audio.
+            </audio>
+            <canvas id="audio-visualizer" width="1000" height="120" aria-label="Audio visualizer"></canvas>
+            <p id="audio-status" class="meta">Audio ready</p>
+          </article>
 
-        <div class="timeline-grid">
-          <article class="card reveal" data-year="1962">
-            <p class="year">1962</p>
-            <h3>Licklider Vision</h3>
-            <p>J.C.R. Licklider promotes a globally connected interactive computer network.</p>
-          </article>
-          <article class="card reveal" data-year="1965">
-            <p class="year">1965</p>
-            <h3>Long-Distance Link Test</h3>
-            <p>Computers in Massachusetts and California communicate over telephone lines.</p>
-          </article>
-          <article class="card reveal" data-year="1968">
-            <p class="year">1968</p>
-            <h3>BBN Wins IMP Contract</h3>
-            <p>Interface Message Processors are commissioned to route packet-switched traffic.</p>
-          </article>
-          <article class="card reveal" data-year="1969">
-            <p class="year">1969</p>
-            <h3>First Four Nodes</h3>
-            <p>UCLA, SRI, UCSB, and University of Utah become ARPANET's first operating sites.</p>
-          </article>
-          <article class="card reveal" data-year="1971">
-            <p class="year">1971</p>
-            <h3>Email Emerges</h3>
-            <p>Network messaging quickly becomes one of the dominant uses of ARPANET.</p>
-          </article>
-          <article class="card reveal" data-year="1973">
-            <p class="year">1973</p>
-            <h3>International Expansion</h3>
-            <p>Connections to the UK and Norway show packet networks can span continents.</p>
-          </article>
-          <article class="card reveal" data-year="1983">
-            <p class="year">1983</p>
-            <h3>TCP/IP Flag Day</h3>
-            <p>ARPANET transitions to TCP/IP on January 1, 1983, enabling internetworking.</p>
-          </article>
-          <article class="card reveal" data-year="1990">
-            <p class="year">1990</p>
-            <h3>ARPANET Decommissioned</h3>
-            <p>The experiment ends, but its architecture and culture shape the modern internet.</p>
+          <article class="card">
+            <h3>Milestone Distribution</h3>
+            <p class="muted">Category breakdown of major events.</p>
+            <canvas id="category-chart" width="500" height="280" aria-label="Milestone category chart"></canvas>
           </article>
         </div>
       </section>
 
-      <div class="pixel-divider" aria-hidden="true"></div>
-
-      <section class="section panel" id="sim">
+      <section id="timeline" class="container section">
         <div class="section-head">
-          <h2>Packet Switching Simulator</h2>
-          <p>Send a packet and watch it route across nodes.</p>
+          <h2>Timeline Engine</h2>
+          <p>Filter, autoplay, and scrub through historical milestones.</p>
         </div>
-        <div class="sim-layout reveal">
-          <div class="map-grid">
-            <button class="node-btn" data-node="ucla" type="button">UCLA</button>
-            <button class="node-btn" data-node="sri" type="button">SRI</button>
-            <button class="node-btn" data-node="ucsb" type="button">UC Santa Barbara</button>
-            <button class="node-btn" data-node="utah" type="button">University of Utah</button>
-          </div>
-          <div class="sim-controls">
-            <label for="from-node">From</label>
-            <select id="from-node">
-              <option value="ucla">UCLA</option>
-              <option value="sri">SRI</option>
-              <option value="ucsb">UC Santa Barbara</option>
-              <option value="utah">University of Utah</option>
+
+        <div class="controls card">
+          <div class="control-group" id="year-controls" role="toolbar" aria-label="Year filter"></div>
+          <div class="control-row">
+            <button id="timeline-play" class="btn btn-primary" type="button">Start Autoplay</button>
+            <label for="timeline-speed">Speed</label>
+            <select id="timeline-speed">
+              <option value="2200">Slow</option>
+              <option value="1300" selected>Normal</option>
+              <option value="700">Fast</option>
             </select>
-            <label for="to-node">To</label>
-            <select id="to-node">
-              <option value="sri">SRI</option>
-              <option value="ucla">UCLA</option>
-              <option value="ucsb">UC Santa Barbara</option>
-              <option value="utah">University of Utah</option>
-            </select>
-            <button class="retro-action" id="send-packet" type="button">Send Packet</button>
+            <label for="timeline-slider">Scrub</label>
+            <input id="timeline-slider" type="range" min="0" max="0" step="1" value="0" />
+            <span id="timeline-status" class="meta">Manual mode</span>
           </div>
-          <p class="packet-display" id="packet-display">Awaiting transmission...</p>
-          <div class="terminal-log" id="packet-log" aria-live="polite"></div>
+          <div class="control-row">
+            <label for="category-filter">Category</label>
+            <select id="category-filter"></select>
+            <label for="text-filter">Text</label>
+            <input id="text-filter" type="search" placeholder="e.g., tcp/ip, email, ucla" />
+          </div>
         </div>
+
+        <div class="timeline-grid" id="timeline-grid"></div>
       </section>
 
-      <div class="pixel-divider" aria-hidden="true"></div>
-
-      <section class="section panel" id="protocol-lab">
+      <section id="network-lab" class="container section">
         <div class="section-head">
-          <h2>Protocol Lab + Quiz</h2>
-          <p>Test your ARPANET knowledge in contest mode.</p>
+          <h2>Network Lab</h2>
+          <p>Simulate packet travel and inspect routes across early ARPANET nodes.</p>
         </div>
-        <div class="split-grid">
-          <div class="quiz-box reveal">
-            <h3>Quiz Engine</h3>
-            <p id="quiz-question">Question loads here...</p>
-            <div id="quiz-options" class="quiz-options"></div>
-            <div class="quiz-actions">
-              <button class="retro-action" id="quiz-submit" type="button">Check Answer</button>
-              <button class="retro-action" id="quiz-next" type="button">Next Question</button>
+
+        <div class="lab-grid">
+          <article class="card">
+            <h3>Node Explorer</h3>
+            <div id="node-buttons" class="chip-row"></div>
+            <p id="node-summary" class="muted">Select a node to inspect.</p>
+            <dl id="node-meta" class="meta-list"></dl>
+          </article>
+
+          <article class="card">
+            <h3>Packet Router</h3>
+            <div class="form-grid">
+              <label for="from-node">From</label>
+              <select id="from-node"></select>
+              <label for="to-node">To</label>
+              <select id="to-node"></select>
+              <label for="packet-size">Packet Size (bytes)</label>
+              <input id="packet-size" type="number" min="64" max="4096" value="512" />
             </div>
-            <p id="quiz-feedback">Score: 0 / 0</p>
-          </div>
-          <div class="retro-box reveal">
+            <div class="actions">
+              <button id="send-packet" class="btn btn-primary" type="button">Send Packet</button>
+              <button id="clear-log" class="btn btn-ghost" type="button">Clear Log</button>
+            </div>
+            <p id="packet-display" class="meta">Awaiting transmission...</p>
+            <div id="packet-log" class="log" aria-live="polite"></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="learning-studio" class="container section">
+        <div class="section-head">
+          <h2>Learning Studio</h2>
+          <p>Exercises and adaptive tools for exploring concepts.</p>
+        </div>
+
+        <div class="panel-grid">
+          <article class="card">
+            <h3>Adaptive Quiz</h3>
+            <p id="quiz-question" class="question">Question loads here...</p>
+            <div id="quiz-options" class="stack"></div>
+            <div class="actions">
+              <button id="quiz-submit" class="btn btn-primary" type="button">Check</button>
+              <button id="quiz-next" class="btn btn-ghost" type="button">Next</button>
+              <button id="quiz-reset" class="btn btn-ghost" type="button">Reset</button>
+            </div>
+            <p id="quiz-feedback" class="meta">Ready</p>
+          </article>
+
+          <article class="card">
             <h3>Protocol Matcher</h3>
-            <p>Pick the right protocol for each task.</p>
-            <div class="matcher-row">
-              <label for="match-remote">Remote login:</label>
-              <select id="match-remote">
-                <option value="">Choose...</option>
-                <option value="telnet">Telnet</option>
-                <option value="ftp">FTP</option>
-                <option value="smtp">Email</option>
-              </select>
+            <div id="matcher-grid" class="stack"></div>
+            <div class="actions">
+              <button id="check-match" class="btn btn-primary" type="button">Evaluate</button>
+              <button id="reset-match" class="btn btn-ghost" type="button">Reset</button>
             </div>
-            <div class="matcher-row">
-              <label for="match-file">File transfer:</label>
-              <select id="match-file">
-                <option value="">Choose...</option>
-                <option value="smtp">Email</option>
-                <option value="ftp">FTP</option>
-                <option value="telnet">Telnet</option>
-              </select>
+            <p id="match-result" class="meta">Waiting for input</p>
+          </article>
+
+          <article class="card">
+            <h3>Fact Generator</h3>
+            <p id="fact-output" class="fact-box">Press generate to see a random fact.</p>
+            <div class="actions">
+              <button id="fact-spin" class="btn btn-primary" type="button">Generate Fact</button>
+              <button id="fact-pin" class="btn btn-ghost" type="button">Pin Fact</button>
             </div>
-            <div class="matcher-row">
-              <label for="match-mail">Send message:</label>
-              <select id="match-mail">
-                <option value="">Choose...</option>
-                <option value="ftp">FTP</option>
-                <option value="smtp">Email</option>
-                <option value="telnet">Telnet</option>
-              </select>
-            </div>
-            <button class="retro-action" id="check-match" type="button">Check Match</button>
-            <p id="match-result">Waiting for input.</p>
-          </div>
+            <ul id="fact-pins" class="pins"></ul>
+          </article>
         </div>
       </section>
 
-      <div class="pixel-divider" aria-hidden="true"></div>
-
-      <section class="section panel" id="archives">
-        <div class="section-head">
-          <h2>Archive Vault</h2>
-          <p>Explore people, milestones, and terms with interactive modules.</p>
-        </div>
-        <div class="split-grid">
-          <div class="console-shell reveal">
-            <h3>Retro Console</h3>
-            <div class="console-output" id="console-output" aria-live="polite"></div>
-            <form id="console-form" class="console-form">
-              <label for="console-input">C:\ARPANET&gt;</label>
-              <input id="console-input" autocomplete="off" />
-              <button class="retro-action" type="submit">Run</button>
-            </form>
-          </div>
-          <div class="fact-lab reveal">
-            <h3>Did You Know Generator</h3>
-            <button class="retro-action" id="fact-spin" type="button">Generate Fact</button>
-            <p id="fact-output">Press the button for a random ARPANET fact.</p>
-            <h3>Contest Meter</h3>
-            <p>Theme score: <span id="theme-score">72</span>/100</p>
-            <button class="retro-action" id="theme-boost" type="button">Boost Theme Score</button>
-          </div>
-        </div>
-      </section>
-
-      <div class="pixel-divider" aria-hidden="true"></div>
-
-      <section class="section panel" id="faq">
+      <section id="reference" class="container section">
         <div class="section-head">
           <h2>Glossary + FAQ</h2>
+          <p>Inline definitions and expandable explanations.</p>
+        </div>
+
+        <article class="card">
           <p>
-            Hover terms like
-            <span tabindex="0" class="term" data-definition="A small chunk of data sent independently across a network.">packet</span>
+            Terms like
+            <button class="term" data-definition="A small chunk of data sent independently across a network.">packet</button>
             and
-            <span tabindex="0" class="term" data-definition="A specialized routing computer in early ARPANET architecture.">IMP</span>
-            for quick definitions.
+            <button class="term" data-definition="Interface Message Processor, a routing computer in ARPANET.">IMP</button>
+            are central to ARPANET architecture.
           </p>
-        </div>
-        <div class="faq-list reveal">
-          <details>
-            <summary>Was ARPANET the internet?</summary>
-            <p>Not exactly. ARPANET was an early network that contributed core architecture and practices.</p>
-          </details>
-          <details>
-            <summary>What happened on January 1, 1983?</summary>
-            <p>ARPANET migrated to TCP/IP in a coordinated transition known as "Flag Day."</p>
-          </details>
-          <details>
-            <summary>Why did packet switching matter?</summary>
-            <p>It improved resilience and efficiency by routing small packets through available paths.</p>
-          </details>
-        </div>
-        <p class="definition-box" id="definition-box">Hover a glossary term to see its definition.</p>
+          <p id="definition-box" class="definition-box">Select a term to view its definition.</p>
+          <div class="faq-list" id="faq-list"></div>
+        </article>
       </section>
 
-      <div class="pixel-divider" aria-hidden="true"></div>
-
-      <section class="section panel" id="community">
+      <section id="community" class="container section">
         <div class="section-head">
-          <h2>Community Zone</h2>
-          <p>Classic 90s web staples: poll + guestbook.</p>
+          <h2>Community</h2>
+          <p>Polls, guestbook entries, and engagement controls.</p>
         </div>
-        <div class="split-grid">
-          <div class="retro-box reveal">
+
+        <div class="panel-grid">
+          <article class="card">
             <h3>Visitor Poll</h3>
-            <p>Which ARPANET moment is most important?</p>
-            <label><input type="radio" name="poll" value="1969" /> 1969 first nodes</label>
-            <label><input type="radio" name="poll" value="1971" /> 1971 email rise</label>
-            <label><input type="radio" name="poll" value="1983" /> 1983 TCP/IP migration</label>
-            <button class="retro-action" id="poll-vote" type="button">Submit Vote</button>
-            <p id="poll-result">No votes yet.</p>
-          </div>
-          <div class="retro-box reveal" id="guestbook">
+            <div id="poll-options" class="stack"></div>
+            <button id="poll-vote" class="btn btn-primary" type="button">Submit Vote</button>
+            <p id="poll-result" class="meta">No votes yet.</p>
+          </article>
+
+          <article class="card" id="guestbook">
             <h3>Guestbook</h3>
-            <form id="guestbook-form" class="guestbook-form">
+            <form id="guestbook-form" class="stack">
               <label for="guest-name">Name</label>
               <input id="guest-name" maxlength="30" required />
               <label for="guest-message">Message</label>
-              <textarea id="guest-message" maxlength="120" required></textarea>
-              <button class="retro-action" type="submit">Sign Guestbook</button>
+              <textarea id="guest-message" maxlength="140" required></textarea>
+              <button class="btn btn-primary" type="submit">Sign Guestbook</button>
             </form>
-            <button class="retro-action" id="guestbook-clear" type="button">Clear Guestbook</button>
-            <div id="guestbook-list" class="guestbook-list"></div>
-          </div>
+            <button id="guestbook-clear" class="btn btn-ghost" type="button">Clear All</button>
+            <div id="guestbook-list" class="log"></div>
+          </article>
+
+          <article class="card">
+            <h3>Engagement</h3>
+            <p>Experience score: <strong id="theme-score">72</strong>/100</p>
+            <div class="actions">
+              <button id="theme-boost" class="btn btn-primary" type="button">Boost Engagement</button>
+              <button id="counter-plus" class="btn btn-ghost" type="button">+ Visitor</button>
+              <button id="counter-minus" class="btn btn-ghost" type="button">- Visitor</button>
+              <button id="counter-reset" class="btn btn-ghost" type="button">Reset</button>
+            </div>
+            <p>Visitor Counter: <strong id="visitor-count">000042</strong></p>
+          </article>
         </div>
       </section>
     </main>
 
-    <footer class="footer panel">
+    <footer class="container footer card">
       <div class="badge-row">
-        <span class="badge">HTML 3.2 FEEL</span>
-        <span class="badge">JS POWERED</span>
-        <span class="badge">WEBRING READY</span>
-        <span class="badge">ARPANET ARCHIVE</span>
+        <span class="badge">Modern UI</span>
+        <span class="badge">Data Driven</span>
+        <span class="badge">Accessible</span>
+        <span class="badge">Interactive</span>
       </div>
-      <p>Visitor Counter: <strong id="visitor-count">000042</strong></p>
-      <div class="counter-tools">
-        <button class="retro-action" id="counter-plus" type="button">+1</button>
-        <button class="retro-action" id="counter-minus" type="button">-1</button>
-        <button class="retro-action" id="counter-reset" type="button">Reset</button>
-      </div>
+      <p>ARPANET Interactive Archive • Built as a static modern web application.</p>
       <div class="webring">
-        <a href="#">&lt;&lt; Prev Site</a>
-        <a href="#">Random</a>
-        <a href="#">Next Site &gt;&gt;</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#network-lab">Network Lab</a>
       </div>
     </footer>
+
+    <div class="command-palette hidden" id="command-palette" aria-hidden="true">
+      <div class="command-card" role="dialog" aria-modal="true" aria-labelledby="cmd-title">
+        <div class="command-head">
+          <strong id="cmd-title">Command Palette</strong>
+          <button class="btn btn-ghost" id="close-palette" type="button">Close</button>
+        </div>
+        <input id="palette-search" type="search" placeholder="Type command or section..." />
+        <div id="palette-results" class="palette-results"></div>
+      </div>
+    </div>
 
     <script src="script.js"></script>
   </body>

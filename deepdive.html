@@ -1,114 +1,107 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <title>Deep Drive Archive</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ARPANET Deep Dive</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="panel hero">
+      <p class="kicker">Deep Research Library</p>
+      <h1>ARPANET Deep Dive</h1>
+      <p>Extended archive with richer context, media, and interactive analysis tools.</p>
+      <nav class="top-links">
+        <a href="index.html">Back to Main Archive</a>
+      </nav>
+    </header>
 
-<body>
-  <div class="scanlines"></div>
+    <div class="pixel-divider" aria-hidden="true"></div>
 
-  <header class="panel hero">
-    <h1>💾 ARPANET DEEP DRIVE</h1>
-    <marquee>AUTHORIZED ACCESS ONLY // ARCHIVE VAULT // 1983 NODE DATA</marquee>
-    <a href="index.html">⬅ Return to Main System</a>
-  </header>
- 
+    <main>
+      <section class="section panel">
+        <div class="section-head">
+          <h2>Audio Archive</h2>
+          <p>Listen to transmission-inspired ambient audio while exploring records.</p>
+        </div>
+        <div class="terminal-log">
+          <audio id="deep-audio" controls loop preload="auto">
+            <source src="audio/arpanet-sound.mp3" type="audio/mpeg" />
+            <source src="audio/arpanet-sound.wav" type="audio/wav" />
+            Your browser does not support the audio element.
+          </audio>
+          <p id="audio-status">Audio ready.</p>
+        </div>
+      </section>
 
-  <main>
+      <section class="section panel">
+        <div class="section-head">
+          <h2>Classified File Index</h2>
+          <p>Simulated file index from major ARPANET operational periods.</p>
+        </div>
+        <div class="console-output">
+          <p class="console-line">/archive/1969/packet_logs_1969.txt</p>
+          <p class="console-line">/archive/1973/transatlantic-link-notes.md</p>
+          <p class="console-line">/archive/1983/tcpip-transition.log</p>
+          <p class="console-line">/archive/1990/decommission-summary.pdf</p>
+          <p class="console-line">ACCESS LEVEL: RESEARCH</p>
+        </div>
+      </section>
 
-    <!-- AUDIO VAULT -->
-    <section class="section panel">
-      <h2>🎧 Audio Archive</h2>
+      <section class="section panel">
+        <div class="section-head">
+          <h2>Network Scan Simulator</h2>
+          <p>Run a staged deep scan and review the hop report.</p>
+        </div>
+        <button id="deep-button" class="ui-button" type="button">Run Deep Scan</button>
+        <div class="packet-display" id="deep-output">Awaiting command...</div>
+      </section>
+    </main>
 
-      <div class="terminal-log">
-        <p>Playing: ARPANET Transmission Audio</p>
+    <script>
+      const deepButton = document.getElementById("deep-button");
+      const deepOutput = document.getElementById("deep-output");
+      const audio = document.getElementById("deep-audio");
+      const audioStatus = document.getElementById("audio-status");
 
-        <audio id="deep-audio" controls loop preload="auto">
-  <source src="./audio/arpanet-sound.mp3" type="audio/mpeg">
-  <source src="./audio/arpanet-sound.wav" type="audio/wav">
-  <audio id="deep-audio" controls loop autoplay muted> </audio>
-  Your browser does not support the audio element.
-</audio>
-      </div>
-    </section>
+      deepButton.addEventListener("click", () => {
+        const messages = [
+          "Scanning historical node metadata...",
+          "Validating UCLA and SRI links...",
+          "Replaying IMP route map...",
+          "Checking TCP/IP transition checkpoints...",
+          "Deep scan complete. No anomalies detected.",
+        ];
 
-    <!-- SECRET FILES -->
-    <section class="section panel">
-      <h2>📂 Classified Files</h2>
+        let i = 0;
+        deepOutput.textContent = messages[i];
+        const interval = setInterval(() => {
+          i += 1;
+          if (i >= messages.length) {
+            clearInterval(interval);
+            return;
+          }
+          deepOutput.textContent = messages[i];
+        }, 800);
+      });
 
-      <div class="console-output">
-        <p>> loading files...</p>
-        <p>> packet_logs_1969.txt</p>
-        <p>> imp-routing-diagram.sys</p>
-        <p>> tcpip-transition.log</p>
-        <p>> ACCESS LEVEL: GRANTED</p>
-      </div>
-    </section>
+      audio.addEventListener("play", () => {
+        audioStatus.textContent = "Audio playing.";
+      });
 
-    <!-- VIDEO / GIF AREA -->
-    <section class="section panel">
-      <h2>📺 Visual Archive</h2>
+      audio.addEventListener("pause", () => {
+        audioStatus.textContent = "Audio paused.";
+      });
 
-      <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" width="300">
-
-      <p>Historic network visualization</p>
-    </section>
-
-    <!-- SECRET BUTTON -->
-    <section class="section panel">
-      <h2>🧪 Hidden Experiment</h2>
-
-      <button id="deep-button" class="retro-action">Run Deep Scan</button>
-      <p id="deep-output">Awaiting command...</p>
-    </section>
-
-  </main>
-
-  <script>
-    document.getElementById("deep-button").addEventListener("click", () => {
-      const output = document.getElementById("deep-output");
-
-      const messages = [
-        "Scanning nodes...",
-        "Connecting to UCLA...",
-        "Routing through IMP...",
-        "Accessing 1983 archive...",
-        "⚠ SYSTEM OVERRIDE COMPLETE ⚠"
-      ];
-
-      let i = 0;
-
-      const interval = setInterval(() => {
-        output.textContent = messages[i];
-        i++;
-
-        if (i >= messages.length) clearInterval(interval);
-      }, 700);
-    });
-  </script>
-  <script>
-  const audio = document.getElementById("deep-audio");
-
-  // Try to autoplay with sound after user interaction
-  document.body.addEventListener("click", () => {
-    if (audio.muted) {
-      audio.muted = false;
-      audio.play().catch(() => {});
-    }
-  });
-
-  // Status logging (optional but cool)
-  audio.addEventListener("play", () => {
-    console.log("Audio playing");
-  });
-
-  audio.addEventListener("error", () => {
-    console.log("Audio failed to load");
-  });
-</script>
-
-
-</body>
+      audio.addEventListener("error", () => {
+        audioStatus.textContent = "Audio failed to load.";
+      });
+    </script>
+  </body>
 </html>
